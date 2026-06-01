@@ -2,13 +2,28 @@
 
 import { useEffect, useState } from "react";
 
+// 1. Interface definida para mapear todas as propriedades e sanar o erro do TypeScript
+interface RegistrationData {
+  nomeCompleto: string;
+  cpf: string;
+  endereco: string;
+  dataNascimento: string;
+  email: string;
+  username: string;
+}
+
 export default function SucessoInscricao() {
-  const [dados, setDados] = useState(null);
+  // 2. Estado explicitamente tipado
+  const [dados, setDados] = useState<RegistrationData | null>(null);
 
   useEffect(() => {
     const inscricao = localStorage.getItem("inscricao");
     if (inscricao) {
-      setDados(JSON.parse(inscricao));
+      try {
+        setDados(JSON.parse(inscricao));
+      } catch (error) {
+        console.error("Error parsing registration data:", error);
+      }
     }
   }, []);
 
@@ -25,7 +40,7 @@ export default function SucessoInscricao() {
       <section className="flex min-h-screen items-center px-4 pt-28 sm:px-6">
         <div className="w-full max-w-2xl mx-auto">
           <div className="rounded-[2rem] border border-lime-400/30 bg-lime-400/5 p-6 shadow-2xl backdrop-blur-md sm:p-10 lg:p-14 text-center">
-            {/* Ícone de sucesso */}
+            {/* Success Icon */}
             <div className="mb-6 inline-block rounded-full bg-lime-400/20 p-6">
               <svg
                 className="h-16 w-16 text-lime-400"
@@ -65,7 +80,7 @@ export default function SucessoInscricao() {
                   </p>
                   <p>
                     <span className="font-bold text-white">Data de Nascimento:</span>{" "}
-                    {new Date(dados.dataNascimento).toLocaleDateString("pt-BR")}
+                    {dados.dataNascimento ? new Date(dados.dataNascimento).toLocaleDateString("pt-BR") : ""}
                   </p>
                   <p>
                     <span className="font-bold text-white">E-mail:</span> {dados.email}
