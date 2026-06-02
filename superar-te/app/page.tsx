@@ -172,7 +172,7 @@ export default function Home() {
 
               <div className="rounded-3xl border border-lime-400/30 bg-black/60 p-6 text-center">
                 <p className="mb-4 text-sm uppercase tracking-[0.3em] text-lime-400">
-                  Inscrições encerram em
+                  Inscrições iniciam em
                 </p>
 
                 <div className="grid grid-cols-4 gap-3">
@@ -423,21 +423,42 @@ export default function Home() {
         </div>
       </section>
 
-      <a
-        href={whatsappLink}
-        target="_blank"
-        rel="noreferrer"
-        aria-label="Falar no WhatsApp"
-        className="fixed bottom-6 right-6 z-50 flex h-16 w-16 items-center justify-center rounded-full bg-[#25D366] shadow-2xl shadow-green-500/40 transition hover:scale-110"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 32 32"
-          className="h-8 w-8 fill-white"
-        >
-          <path d="M16.04 3C8.84 3 3 8.74 3 15.82c0 2.51.74 4.96 2.14 7.06L3 29l6.33-2.08a13.2 13.2 0 006.71 1.82C23.24 28.74 29 23 29 15.92 29 8.84 23.24 3 16.04 3zm7.69 18.42c-.32.89-1.84 1.7-2.53 1.81-.65.11-1.47.16-2.37-.12-.55-.17-1.25-.41-2.15-.79-3.78-1.64-6.23-5.47-6.42-5.72-.19-.25-1.53-2.04-1.53-3.9 0-1.86.98-2.77 1.33-3.15.35-.38.76-.47 1.02-.47.25 0 .51 0 .73.01.24.01.56-.09.87.66.32.77 1.08 2.65 1.18 2.84.1.19.16.41.03.66-.13.25-.19.41-.38.63-.19.22-.4.49-.57.66-.19.19-.39.39-.17.77.22.38.98 1.62 2.11 2.62 1.45 1.29 2.67 1.69 3.05 1.88.38.19.6.16.82-.09.22-.25.95-1.1 1.2-1.47.25-.38.51-.32.86-.19.35.13 2.23 1.05 2.61 1.24.38.19.63.28.73.44.09.16.09.95-.22 1.84z" />
-        </svg>
-      </a>
+      {/* BOTÕES FLUTUANTES */}
+<div className="fixed bottom-6 right-6 z-50 flex flex-col items-center gap-4">
+  {/* INSTAGRAM */}
+  <a
+    href="https://www.instagram.com/superarte.oficial"
+    target="_blank"
+    rel="noreferrer"
+    aria-label="Instagram SUPERAR-TE"
+    className="group flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-[#833AB4] via-[#FD1D1D] to-[#FCAF45] shadow-2xl shadow-pink-500/40 transition hover:scale-110"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      className="h-8 w-8 fill-white"
+    >
+      <path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2c1.65 0 3 1.35 3 3v10c0 1.65-1.35 3-3 3H7c-1.65 0-3-1.35-3-3V7c0-1.65 1.35-3 3-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6zm5.25-2.25a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5z" />
+    </svg>
+  </a>
+
+  {/* WHATSAPP */}
+  <a
+    href={whatsappLink}
+    target="_blank"
+    rel="noreferrer"
+    aria-label="Falar no WhatsApp"
+    className="flex h-16 w-16 animate-pulse items-center justify-center rounded-full bg-[#25D366] shadow-2xl shadow-green-500/40 transition hover:scale-110"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 32 32"
+      className="h-8 w-8 fill-white"
+    >
+      <path d="M16.04 3C8.84 3 3 8.74 3 15.82c0 2.51.74 4.96 2.14 7.06L3 29l6.33-2.08a13.2 13.2 0 006.71 1.82C23.24 28.74 29 23 29 15.92 29 8.84 23.24 3 16.04 3zm7.69 18.42c-.32.89-1.84 1.7-2.53 1.81-.65.11-1.47.16-2.37-.12-.55-.17-1.25-.41-2.15-.79-3.78-1.64-6.23-5.47-6.42-5.72-.19-.25-1.53-2.04-1.53-3.9 0-1.86.98-2.77 1.33-3.15.35-.38.76-.47 1.02-.47.25 0 .51 0 .73.01.24.01.56-.09.87.66.32.77 1.08 2.65 1.18 2.84.1.19.16.41.03.66-.13.25-.19.41-.38.63-.19.22-.4.49-.57.66-.19.19-.39.39-.17.77.22.38.98 1.62 2.11 2.62 1.45 1.29 2.67 1.69 3.05 1.88.38.19.6.16.82-.09.22-.25.95-1.1 1.2-1.47.25-.38.51-.32.86-.19.35.13 2.23 1.05 2.61 1.24.38.19.63.28.73.44.09.16.09.95-.22 1.84z" />
+    </svg>
+  </a>
+</div>
     </main>
   );
 }
