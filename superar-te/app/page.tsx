@@ -1,4 +1,5 @@
-﻿const whatsappLink = "https://wa.me/5584998637619?text=Ol%C3%A1!%20Quero%20participar%20do%20SUPERAR-TE%20%7C%20100KM%20em%2060%20dias.%20Gostaria%20de%20receber%20mais%20informa%C3%A7%C3%B5es.";
+﻿import Image from "next/image";
+const whatsappLink = "https://wa.me/5584998637619?text=Ol%C3%A1!%20Quero%20participar%20do%20SUPERAR-TE%20%7C%20100KM%20em%2060%20dias.%20Gostaria%20de%20receber%20mais%20informa%C3%A7%C3%B5es.";
 
 export default function Home() {
   const steps = [
@@ -141,21 +142,75 @@ export default function Home() {
       </section>
 
       <section id="kit-atleta" className="border-t border-white/10 bg-black py-20 px-6 text-zinc-100">
-        <div className="mx-auto max-w-6xl">
-          <div className="mb-12 text-center">
-            <p className="text-sm uppercase tracking-[0.4em] text-lime-400">O que o atleta recebe</p>
-            <h2 className="mt-4 text-4xl font-black text-white">Kit SUPERAR-TE</h2>
+  <div className="mx-auto max-w-7xl">
+    <div className="mb-12 text-center">
+      <p className="text-sm uppercase tracking-[0.4em] text-lime-400">
+        O que o atleta recebe
+      </p>
+      <h2 className="mt-4 text-4xl font-black text-white sm:text-5xl">
+        Kit SUPERAR-TE
+      </h2>
+      <p className="mx-auto mt-4 max-w-2xl text-zinc-400">
+        Um kit pensado para marcar sua jornada de superação do início ao fim.
+      </p>
+    </div>
+
+    <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+      {[
+        {
+          title: "Camisa Oficial",
+          image: "/images/CAMISA.png",
+        },
+        {
+          title: "Medalha Exclusiva",
+          image: "/images/MEDALHA.png",
+        },
+        {
+          title: "Certificado Digital",
+          image: "/images/CERTIFICADO.png",
+        },
+        {
+          title: "Sacochila Oficial",
+          image: "/images/SACOCHILA.png",
+        },
+      ].map((item) => (
+        <div
+          key={item.title}
+          className="group rounded-[32px] border border-white/10 bg-white/5 p-6 text-center shadow-2xl shadow-black/30 transition duration-300 hover:-translate-y-2 hover:border-lime-400/40 hover:bg-white/10"
+        >
+          <div className="flex h-64 items-center justify-center rounded-3xl border border-white/10 bg-black/40 p-4">
+            <Image
+              src={item.image}
+              alt={item.title}
+              width={500}
+              height={500}
+              className="max-h-full max-w-full object-contain transition duration-300 group-hover:scale-105"
+            />
           </div>
 
-          <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-            {kitItems.map((item) => (
-              <div key={item} className="rounded-3xl border border-white/10 bg-white/5 p-8 shadow-xl shadow-black/20 transition hover:-translate-y-1 hover:bg-white/10">
-                <p className="text-xl font-semibold text-white">{item}</p>
-              </div>
-            ))}
-          </div>
+          <h3 className="mt-6 text-2xl font-black text-white">
+            {item.title}
+          </h3>
         </div>
-      </section>
+      ))}
+    </div>
+
+    <div className="mt-12 grid gap-4 md:grid-cols-3">
+      {[
+        "Dashboard de evolução",
+        "Comunidade exclusiva",
+        "Conteúdos e desafios semanais",
+      ].map((item) => (
+        <div
+          key={item}
+          className="rounded-2xl border border-lime-400/20 bg-lime-400/10 p-5 text-center"
+        >
+          <span className="font-bold text-lime-400">✓ {item}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
 
       <section id="tribo" className="border-t border-white/10 bg-[#080808] py-20 px-6 text-zinc-100">
         <div className="mx-auto max-w-6xl">
