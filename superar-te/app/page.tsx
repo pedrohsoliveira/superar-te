@@ -41,9 +41,17 @@ export default function Home() {
     <main className="min-h-screen bg-black text-white">
       <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#020202]/90 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 text-sm text-zinc-300 md:text-base">
-          <a href="#hero" className="font-semibold tracking-[0.3em] uppercase text-white">
-            SUPERAR-TE
+          <a href="#hero" className="flex items-center">
+            <Image
+             src="/logos/J.png"
+             alt="Logo Superar-te"
+             width={280}
+             height={400}
+             className="object-contain"
+             priority
+            />
           </a>
+
 
           <nav className="hidden items-center gap-8 lg:flex">
             <a href="#desafio" className="transition hover:text-lime-400">O Desafio</a>
@@ -280,49 +288,8 @@ export default function Home() {
             </svg>
           </a>
           
-                    {/* Container fixo no canto inferior direito agrupando os dois botões */}
-          <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-4">
-            
-            {/* NOVO: Botão Flutuante do Instagram */}
-            <a
-              href="https://instagram.com" // Substitua pelo seu @ real
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Seguir no Instagram"
-              className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] shadow-2xl shadow-pink-500/40 transition hover:scale-110"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                className="h-8 w-8 fill-none stroke-white"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-              </svg>
-            </a>
+          
 
-            {/* SEU BOTÃO DO WHATSAPP (Apenas removemos o 'fixed bottom-6 right-6 z-50' dele) */}
-            <a
-              href={whatsappLink}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Falar no WhatsApp"
-              className="flex h-16 w-16 items-center justify-center rounded-full bg-[#25D366] shadow-2xl shadow-green-500/40 transition hover:scale-110"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 32 32"
-                className="h-8 w-8 fill-white"
-              >
-                <path d="M16.04 3C8.84 3 3 8.74 3 15.82c0 2.51.74 4.96 2.14 7.06L3 29l6.33-2.08a13.2 13.2 0 006.71 1.82C23.24 28.74 29 23 29 15.92 29 8.84 23.24 3 16.04 3zm7.69 18.42c-.32.89-1.84 1.7-2.53 1.81-.65.11-1.47.16-2.37-.12-.55-.17-1.25-.41-2.15-.79-3.78-1.64-6.23-5.47-6.42-5.72-.19-.25-1.53-2.04-1.53-3.9 0-1.86.98-2.77 1.33-3.15.35-.38.76-.47 1.02-.47.25 0 .51 0 .73.01.24.01.56-.09.87.66.32.77 1.08 2.65 1.18 2.84.1.19.16.41.03.66-.13.25-.19.41-.38.63-.19.22-.4.49-.57.66-.19.19-.39.39-.17.77.22.38.98 1.62 2.11 2.62 1.45 1.29 2.67 1.69 3.05 1.88.38.19.6.16.82-.09.22-.25.95-1.1 1.2-1.47.25-.38.51-.32.86-.19.35.13 2.23 1.05 2.61 1.24.38.19.63.28.73.44.09.16.09.95-.22 1.84z" />
-              </svg>
-            </a>
-
-          </div>
     </main>
   );
 }
