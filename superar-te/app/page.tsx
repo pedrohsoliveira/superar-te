@@ -439,7 +439,7 @@ export default function Home() {
 <div className="fixed bottom-6 right-6 z-50 flex flex-col items-center gap-4">
   {/* INSTAGRAM */}
   <a
-    href="https://www.instagram.com/superarte.oficial"
+    href="https://www.instagram.com/superar_te_oficial"
     target="_blank"
     rel="noreferrer"
     aria-label="Instagram SUPERAR-TE"
