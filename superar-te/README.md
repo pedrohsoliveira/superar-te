@@ -34,3 +34,18 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Supabase RLS Configuration
+
+This project uses Supabase for authentication, member data, activities, and file uploads. To protect private member data with row-level security, apply the SQL policies in `supabase-policies.sql` in the Supabase SQL editor.
+
+Steps:
+1. Open your Supabase project.
+2. Go to the SQL editor.
+3. Paste the contents of `supabase-schema.sql` and execute to create the required tables and enable RLS.
+4. Then paste the contents of `supabase-policies.sql` and execute to create the row-level security policies.
+5. Make the `uploads` storage bucket private, then allow the app to generate signed URLs for access.
+
+> If Supabase shows the warning about tables without row-level security, it is because the editor detected the table creation before RLS was enabled. The updated `supabase-schema.sql` now enables RLS during creation, so you can safely run it and then apply `supabase-policies.sql`.
+
+After applying policies, authenticated users will only be able to read and modify their own rows.
