@@ -25,7 +25,6 @@ type Props = {
 
 export default function InscricaoForm({
   submitLabel = "Finalizar inscrição",
-  redirectTo,
   onSuccess,
 }: Props) {
   const [formData, setFormData] = useState<FormData>({
@@ -109,12 +108,12 @@ export default function InscricaoForm({
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="space-y-4 rounded-[32px] border border-white/10 bg-white/5 p-4">
-        <p className="text-sm uppercase tracking-[0.35em] text-lime-400">
+      <div className="space-y-4 rounded-[32px] border border-white/10 bg-white/5 p-4 overflow-hidden">
+        <p className="text-center text-sm uppercase tracking-[0.35em] text-lime-400">
           Escolha sua inscrição
         </p>
 
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="grid gap-6 md:grid-cols-2">
           {pagamentoOptions.map((option) => {
             const selected = formData.tipo_inscricao === option.tipo;
             return (
@@ -122,18 +121,23 @@ export default function InscricaoForm({
                 key={option.tipo}
                 type="button"
                 onClick={() => handleCardSelect(option.tipo)}
-                className={`rounded-[2rem] border p-5 text-left transition focus:outline-none ${
+                className={`flex min-h-[220px] flex-col justify-between overflow-hidden rounded-[2rem] border p-6 text-center transition duration-300 ease-in-out focus:outline-none ${
                   selected
-                    ? "border-lime-400 bg-lime-400/10 shadow-[0_0_20px_rgba(132,204,22,0.15)]"
-                    : "border-white/10 bg-black/70 hover:border-lime-400/50"
+                    ? "border-lime-400 bg-lime-400/10 shadow-[0_10px_30px_rgba(132,204,22,0.16)]"
+                    : "border-white/10 bg-black/70 hover:border-lime-400/60 hover:bg-white/5 hover:shadow-[0_10px_25px_rgba(0,0,0,0.18)]"
                 }`}
               >
-                <div className="flex items-center justify-between gap-4">
+                <div className="flex flex-col gap-4">
                   <div>
-                    <p className="text-lg font-black text-white">{option.titulo}</p>
-                    <p className="mt-2 text-sm text-zinc-400">{option.descricao}</p>
+                    <p className="text-xl font-black leading-snug text-white sm:text-2xl">
+                      {option.titulo}
+                    </p>
+                    <p className="mt-4 text-sm leading-6 text-zinc-300 break-words">
+                      {option.descricao}
+                    </p>
                   </div>
-                  <span className="rounded-full bg-white/5 px-4 py-2 text-sm font-bold text-white">
+
+                  <span className="mx-auto mt-4 inline-flex min-h-[70px] min-w-[70px] items-center justify-center rounded-full border border-lime-400 bg-black/80 px-4 py-3 text-lg font-black text-white sm:text-xl md:mx-0 md:self-end">
                     R$ {option.preco.toFixed(2).replace(".", ",")}
                   </span>
                 </div>
@@ -142,69 +146,70 @@ export default function InscricaoForm({
           })}
         </div>
 
-        <p className="text-sm text-zinc-400">
-          Após o desafio, o frete do kit será cobrado separadamente conforme o
-          endereço de envio.
+        <p className="mx-auto max-w-2xl text-center text-sm leading-6 text-zinc-400">
+          Após o desafio, o frete do kit será cobrado separadamente conforme o endereço de envio.
         </p>
       </div>
-      <input
-        name="nome"
-        value={formData.nome}
-        onChange={handleChange}
-        type="text"
-        required
-        placeholder="Nome completo"
-        className="w-full rounded-xl border border-zinc-700 bg-black px-4 py-3 text-white outline-none focus:border-lime-400"
-      />
+      <div className="grid gap-4">
+        <input
+          name="nome"
+          value={formData.nome}
+          onChange={handleChange}
+          type="text"
+          required
+          placeholder="Nome completo"
+          className="w-full rounded-3xl border border-zinc-700 bg-black px-4 py-4 text-white outline-none transition focus:border-lime-400 focus:ring-2 focus:ring-lime-400/20"
+        />
 
-      <input
-        name="data_nascimento"
-        value={formData.data_nascimento}
-        onChange={handleChange}
-        type="date"
-        required
-        className="w-full rounded-xl border border-zinc-700 bg-black px-4 py-3 text-white outline-none focus:border-lime-400"
-      />
+        <input
+          name="data_nascimento"
+          value={formData.data_nascimento}
+          onChange={handleChange}
+          type="date"
+          required
+          className="w-full rounded-3xl border border-zinc-700 bg-black px-4 py-4 text-white outline-none transition focus:border-lime-400 focus:ring-2 focus:ring-lime-400/20"
+        />
 
-      <input
-        name="cpf"
-        value={formData.cpf}
-        onChange={handleChange}
-        type="text"
-        required
-        placeholder="CPF"
-        className="w-full rounded-xl border border-zinc-700 bg-black px-4 py-3 text-white outline-none focus:border-lime-400"
-      />
+        <input
+          name="cpf"
+          value={formData.cpf}
+          onChange={handleChange}
+          type="text"
+          required
+          placeholder="CPF"
+          className="w-full rounded-3xl border border-zinc-700 bg-black px-4 py-4 text-white outline-none transition focus:border-lime-400 focus:ring-2 focus:ring-lime-400/20"
+        />
 
-      <textarea
-        name="endereco_completo"
-        value={formData.endereco_completo}
-        onChange={handleChange}
-        required
-        placeholder="Endereço completo"
-        rows={3}
-        className="w-full rounded-xl border border-zinc-700 bg-black px-4 py-3 text-white outline-none focus:border-lime-400"
-      />
+        <textarea
+          name="endereco_completo"
+          value={formData.endereco_completo}
+          onChange={handleChange}
+          required
+          placeholder="Endereço completo"
+          rows={4}
+          className="w-full rounded-3xl border border-zinc-700 bg-black px-4 py-4 text-white outline-none transition focus:border-lime-400 focus:ring-2 focus:ring-lime-400/20"
+        />
 
-      <input
-        name="email"
-        value={formData.email}
-        onChange={handleChange}
-        type="email"
-        required
-        placeholder="E-mail"
-        className="w-full rounded-xl border border-zinc-700 bg-black px-4 py-3 text-white outline-none focus:border-lime-400"
-      />
+        <input
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          type="email"
+          required
+          placeholder="E-mail"
+          className="w-full rounded-3xl border border-zinc-700 bg-black px-4 py-4 text-white outline-none transition focus:border-lime-400 focus:ring-2 focus:ring-lime-400/20"
+        />
 
-      <input
-        name="whatsapp"
-        value={formData.whatsapp}
-        onChange={handleChange}
-        type="tel"
-        required
-        placeholder="WhatsApp"
-        className="w-full rounded-xl border border-zinc-700 bg-black px-4 py-3 text-white outline-none focus:border-lime-400"
-      />
+        <input
+          name="whatsapp"
+          value={formData.whatsapp}
+          onChange={handleChange}
+          type="tel"
+          required
+          placeholder="WhatsApp"
+          className="w-full rounded-3xl border border-zinc-700 bg-black px-4 py-4 text-white outline-none transition focus:border-lime-400 focus:ring-2 focus:ring-lime-400/20"
+        />
+      </div>
 
       {error && (
         <p className="rounded-xl bg-red-500/10 p-3 text-sm text-red-400">
