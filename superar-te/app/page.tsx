@@ -1,24 +1,21 @@
 ﻿"use client";
 
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import InscricaoForm from "@/src/components/InscricaoForm";
 
 const whatsappLink =
   "https://wa.me/5584998637619?text=Ol%C3%A1!%20Quero%20participar%20do%20SUPERAR-TE%20%7C%20100KM%20em%2060%20dias.%20Gostaria%20de%20receber%20mais%20informa%C3%A7%C3%B5es.";
 
 export default function Home() {
-  const [tempoRestante, setTempoRestante] = React.useState({
+  const [tempoRestante, setTempoRestante] = useState({
     dias: 30,
     horas: 0,
     minutos: 0,
     segundos: 0,
   });
 
-  const [formOpen, setFormOpen] = useState(false);
-
-  React.useEffect(() => {
+  useEffect(() => {
     const dataFinal = new Date();
     dataFinal.setDate(dataFinal.getDate() + 30);
 
@@ -142,12 +139,12 @@ export default function Home() {
           </nav>
 
           <div className="flex flex-wrap gap-3">
-            <button
-              onClick={() => setFormOpen(true)}
+            <Link
+              href="/inscricao"
               className="rounded-full bg-lime-400 px-8 py-4 font-bold text-black transition hover:scale-105 hover:bg-lime-300"
             >
               QUERO PARTICIPAR
-            </button>
+            </Link>
             <Link
               href="/membros/login"
               className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-8 py-4 text-sm font-bold text-white transition hover:bg-white/10"
@@ -472,32 +469,6 @@ export default function Home() {
   </a>
 </div>
 
-      {/* MODAL DE INSCRIÇÃO */}
-      {formOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 px-4 backdrop-blur-sm">
-          <div className="w-full max-w-lg rounded-3xl border border-lime-400/30 bg-zinc-950 p-6 text-white shadow-2xl">
-            <div className="mb-6 flex items-center justify-between">
-              <div>
-                <p className="text-sm uppercase tracking-[0.3em] text-lime-400">
-                  SUPERAR-TE
-                </p>
-                <h2 className="text-2xl font-black">
-                  Formulário de Inscrição
-                </h2>
-              </div>
-
-              <button
-                onClick={() => setFormOpen(false)}
-                className="rounded-full px-3 py-1 text-2xl text-zinc-400 hover:bg-white/10 hover:text-white"
-              >
-                ×
-              </button>
-            </div>
-
-            <InscricaoForm submitLabel={"FINALIZAR INSCRIÇÃO"} onSuccess={() => setFormOpen(false)} />
-          </div>
-        </div>
-      )}
     </main>
   );
 }
