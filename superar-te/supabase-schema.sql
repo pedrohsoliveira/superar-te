@@ -20,6 +20,13 @@ create table if not exists inscricoes (
 create unique index if not exists inscricoes_email_idx on inscricoes (email);
 create unique index if not exists inscricoes_cpf_idx on inscricoes (cpf);
 
+alter table if exists inscricoes add column if not exists tipo_inscricao text;
+alter table if exists inscricoes add column if not exists valor_inscricao numeric(10,2);
+alter table if exists inscricoes add column if not exists frete_cobrado boolean default false;
+alter table if exists inscricoes add column if not exists status text default 'PENDENTE';
+alter table if exists inscricoes add column if not exists mercadopago_status text;
+alter table if exists inscricoes add column if not exists mercadopago_payment_id text;
+
 -- Table for activity logs
 create table if not exists atividades (
   id uuid primary key default gen_random_uuid(),

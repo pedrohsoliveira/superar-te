@@ -14,7 +14,12 @@ type Inscricao = {
   email: string;
   data_nascimento: string | null;
   endereco_completo: string;
+  tipo_inscricao: string | null;
+  valor_inscricao: number | null;
+  frete_cobrado: boolean | null;
   status: string;
+  mercadopago_status?: string | null;
+  mercadopago_payment_id?: string | null;
   created_at: string | null;
 };
 
@@ -122,7 +127,9 @@ export default function AdminPage() {
 
     const { data, error } = await supabase
       .from("inscricoes")
-      .select("id, nome, cpf, whatsapp, email, data_nascimento, endereco_completo, status, created_at")
+      .select(
+        "id, nome, cpf, whatsapp, email, data_nascimento, endereco_completo, tipo_inscricao, valor_inscricao, frete_cobrado, status, mercadopago_status, mercadopago_payment_id, created_at"
+      )
       .order("created_at", { ascending: false });
 
     setLoading(false);
@@ -271,7 +278,9 @@ export default function AdminPage() {
                   <th className="px-4 py-3">CPF</th>
                   <th className="px-4 py-3">WhatsApp</th>
                   <th className="px-4 py-3">E-mail</th>
-                  <th className="px-4 py-3">Nascimento</th>
+                  <th className="px-4 py-3">Tipo</th>
+                  <th className="px-4 py-3">Valor</th>
+                  <th className="px-4 py-3">Frete</th>
                   <th className="px-4 py-3">Status</th>
                   <th className="px-4 py-3">Inscrição</th>
                 </tr>
@@ -283,7 +292,15 @@ export default function AdminPage() {
                     <td className="px-4 py-4 text-white/70">{item.cpf}</td>
                     <td className="px-4 py-4 text-white/70">{item.whatsapp}</td>
                     <td className="px-4 py-4 text-white/70">{item.email}</td>
-                    <td className="px-4 py-4 text-white/70">{formatDate(item.data_nascimento)}</td>
+                    <td className="px-4 py-4 text-white/70">{item.tipo_inscricao ?? "-"}</td>
+                    <td className="px-4 py-4 text-white/70">
+                      {item.valor_inscricao != null
+                        ? `R$ ${item.valor_inscricao.toFixed(2).replace(".", ",")}`
+                        : "-"}
+                    </td>
+                    <td className="px-4 py-4 text-white/70">
+                      {item.frete_cobrado ? "Sim" : "Não"}
+                    </td>
                     <td className="px-4 py-4">
                       <div className="flex items-center gap-2">
                         <select
