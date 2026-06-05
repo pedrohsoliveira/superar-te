@@ -23,7 +23,7 @@ export default function UploadForm({ userId }: { userId: string }) {
 
     const { data, error: uploadError } = await supabase.storage
       .from("uploads")
-      .upload(path, file as any, { cacheControl: "3600", upsert: false });
+      .upload(path, file!, { cacheControl: "3600", upsert: false });
     if (uploadError) {
       setError(uploadError.message);
       setLoading(false);
